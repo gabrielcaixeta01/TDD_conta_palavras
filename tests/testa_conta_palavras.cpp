@@ -5,6 +5,7 @@
 
 #include "../include/conta_palavras.hpp"  // Incluindo o cabeçalho com o diretório correto
 
+// Teste em arquivo vazio
 TEST_CASE("Arquivo vazio", "[carregarArquivo]") {
     ContaPalavras conta;
 
@@ -13,4 +14,15 @@ TEST_CASE("Arquivo vazio", "[carregarArquivo]") {
 
     // Verificando que a contagem de palavras é zero
     REQUIRE(conta.getContagem() == 0);  // Esperado que a contagem seja 0 para um arquivo vazio
+}
+
+// Teste contando errado o numero de palavras
+TEST_CASE("Arquivo válido", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Simulando o carregamento de um arquivo válido
+    REQUIRE(conta.carregarArquivo("arquivo_valido.txt"));  // Certifique-se de que está usando o caminho correto
+
+    // Verificando a contagem de palavras
+    REQUIRE(conta.getContagem() == 6);  // Esperado que o arquivo tenha 6 palavras, por exemplo
 }
