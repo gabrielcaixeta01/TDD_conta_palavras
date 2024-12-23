@@ -57,3 +57,15 @@ TEST_CASE("Diferenciação de maiúsculas e minúsculas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("Texto") == 1);  // Esperado: 1
     REQUIRE(conta.getPalavra("texto") == 1);  // Esperado: 1
 }
+
+// Teste com com caracteres especiais
+TEST_CASE("Palavras com caracteres especiais", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Simulando o carregamento de um arquivo com caracteres especiais
+    REQUIRE(conta.carregarArquivo("arquivo_com_acento.txt"));
+
+    // Verificando a contagem de palavras com acentos
+    REQUIRE(conta.getPalavra("é") == 1);  // Esperado: 1
+    REQUIRE(conta.getPalavra("será") == 1);  // Esperado: 1
+}
