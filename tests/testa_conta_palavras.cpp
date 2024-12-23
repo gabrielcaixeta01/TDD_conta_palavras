@@ -45,3 +45,15 @@ TEST_CASE("Arquivo com palavras repetidas", "[carregarArquivo]") {
     // Verificando as contagens esperadas (substitua pelos valores reais de contagem no seu arquivo)
     REQUIRE(conta.getContagem() == 10);  // Exemplo de contagem de palavras
 }
+
+// Teste com letras maiúsculas e minúsculas
+TEST_CASE("Diferenciação de maiúsculas e minúsculas", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Simulando o carregamento de um arquivo com maiúsculas e minúsculas
+    REQUIRE(conta.carregarArquivo("arquivo_maiusculas_minusculas.txt"));
+
+    // Verificando que "Texto" e "texto" são contados separadamente
+    REQUIRE(conta.getPalavra("Texto") == 1);  // Esperado: 1
+    REQUIRE(conta.getPalavra("texto") == 1);  // Esperado: 1
+}

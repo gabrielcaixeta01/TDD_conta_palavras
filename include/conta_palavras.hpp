@@ -6,15 +6,16 @@
 #include <string>
 #include <unordered_map>
 
-using namespace std;  // Adiciona isso para não precisar usar "std::" toda hora
+using namespace std;
 
 class ContaPalavras {
     public:
         ContaPalavras();
-        bool carregarArquivo(const string& nomeArquivo);  // Usa string diretamente
-        int getContagem() const;  // Método para obter a contagem de palavras
+        bool carregarArquivo(const string& nomeArquivo);
+        int getContagem() const;
+        int getPalavra(const string& palavra) const;
     private:
-        unordered_map<string, int> palavras;  // Usa unordered_map diretamente
+        unordered_map<string, int> palavras;
 };
 
 #endif  // INCLUDE_CONTA_PALAVRAS_HPP_

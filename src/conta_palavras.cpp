@@ -46,3 +46,11 @@ int ContaPalavras::getContagem() const {
     }
     return contagem;
 }
+
+int ContaPalavras::getPalavra(const string& palavra) const {
+    auto it = palavras.find(palavra);
+    if (it != palavras.end()) {
+        return it->second;
+    }
+    return 0;
+}
