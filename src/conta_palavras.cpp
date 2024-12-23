@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <cctype>  // Para usar isalnum()
 
 using namespace std;
 
@@ -10,8 +11,7 @@ ContaPalavras::ContaPalavras() {
 }
 
 bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
-    // Agora vamos garantir que estamos referenciando o caminho correto
-    ifstream arquivo("data/" + nomeArquivo);  // Adiciona o diretório "data/"
+    ifstream arquivo("data/" + nomeArquivo);  // Abre o arquivo com o caminho correto
     if (!arquivo.is_open()) {
         return false;  // Se o arquivo não for aberto corretamente, retorna falso
     }
@@ -25,6 +25,11 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
         stringstream ss(linha);
         string palavra;
         while (ss >> palavra) {
+            // Remover caracteres não alfanuméricos do final e início da palavra
+            palavra.erase(remove_if(palavra.begin(), palavra.end(), [](char c) {
+                return !isalnum(c);  // Remove qualquer coisa que não seja alfanumérica
+            }), palavra.end());
+
             // Incrementa a contagem da palavra
             palavras[palavra]++;
         }
@@ -48,9 +53,10 @@ int ContaPalavras::getContagem() const {
 }
 
 int ContaPalavras::getPalavra(const string& palavra) const {
+    // Verifica se a palavra está no mapa e retorna a contagem, senão retorna 0
     auto it = palavras.find(palavra);
     if (it != palavras.end()) {
         return it->second;
     }
-    return 0;
+    return 0;  // Se a palavra não for encontrada, retorna 0
 }
