@@ -34,3 +34,14 @@ TEST_CASE("Arquivo inexistente", "[carregarArquivo]") {
     // Simulando o carregamento de um arquivo inexistente
     REQUIRE_FALSE(conta.carregarArquivo("arquivo_inexistente.txt"));  // Esperado: false
 }
+
+// Teste arquivo com palavras repetidas
+TEST_CASE("Arquivo com palavras repetidas", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Simulando o carregamento de um arquivo com palavras repetidas
+    REQUIRE(conta.carregarArquivo("arquivo_repetido.txt"));
+
+    // Verificando as contagens esperadas (substitua pelos valores reais de contagem no seu arquivo)
+    REQUIRE(conta.getContagem() == 10);  // Exemplo de contagem de palavras
+}
