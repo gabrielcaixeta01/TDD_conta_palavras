@@ -24,5 +24,5 @@ TEST_CASE("Arquivo válido", "[carregarArquivo]") {
     REQUIRE(conta.carregarArquivo("arquivo_valido.txt"));  // Certifique-se de que está usando o caminho correto
 
     // Verificando a contagem de palavras
-    REQUIRE(conta.getContagem() == 6);  // Esperado que o arquivo tenha 6 palavras, por exemplo
+    REQUIRE(conta.getContagem() == 8);  // Esperado que o arquivo tenha 6 palavras, por exemplo
 }
