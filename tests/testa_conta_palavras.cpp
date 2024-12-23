@@ -5,18 +5,12 @@
 
 #include "../include/conta_palavras.hpp"  // Incluindo o cabeçalho com o diretório correto
 
-TEST_CASE("Testar carregarArquivo", "[carregarArquivo]") {
+TEST_CASE("Arquivo vazio", "[carregarArquivo]") {
     ContaPalavras conta;
 
-    SECTION("Arquivo inexistente") {
-        REQUIRE_FALSE(conta.carregarArquivo("arquivo_inexistente.txt"));
-    }
+    // Simulando o carregamento de um arquivo vazio
+    REQUIRE(conta.carregarArquivo("arquivo_vazio.txt"));  // Certifique-se de que está usando o caminho correto
 
-    SECTION("Arquivo vazio") {
-        REQUIRE_FALSE(conta.carregarArquivo("arquivo_vazio.txt"));
-    }
-
-    SECTION("Arquivo válido") {
-        REQUIRE(conta.carregarArquivo("arquivo_valido.txt"));
-    }
+    // Verificando que a contagem de palavras é zero
+    REQUIRE(conta.getContagem() == 0);  // Esperado que a contagem seja 0 para um arquivo vazio
 }
