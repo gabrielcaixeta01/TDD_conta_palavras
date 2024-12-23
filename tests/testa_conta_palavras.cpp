@@ -26,3 +26,11 @@ TEST_CASE("Arquivo válido", "[carregarArquivo]") {
     // Verificando a contagem de palavras
     REQUIRE(conta.getContagem() == 8);  // Esperado que o arquivo tenha 6 palavras, por exemplo
 }
+
+// Teste com arquivo inexistente
+TEST_CASE("Arquivo inexistente", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Simulando o carregamento de um arquivo inexistente
+    REQUIRE_FALSE(conta.carregarArquivo("arquivo_inexistente.txt"));  // Esperado: false
+}
