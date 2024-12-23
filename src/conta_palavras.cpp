@@ -1,13 +1,22 @@
 // Copyright 2024 Gabriel Caixeta Romero
 #include "../include/conta_palavras.hpp"
 #include <fstream>
-#include <sstream>
 #include <iostream>
-#include <cctype>  // Para usar isalnum()
+#include <unordered_map>
+#include <locale>  // Para configurar o locale UTF-8
+#include <cctype>  // Para funções de caracteres
 
 using namespace std;
 
+// Função personalizada para verificar se o caractere é válido
+bool isCaracterValido(char c) {
+    // Verifica se é uma letra ou número (incluindo caracteres com acentos no intervalo Unicode)
+    return (isalpha(c) || isdigit(c) || (unsigned char)c >= 128);
+}
+
 ContaPalavras::ContaPalavras() {
+    // Configura o locale global para UTF-8
+    locale::global(locale("en_US.UTF-8"));
 }
 
 bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
@@ -19,28 +28,37 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
     // Limpa o mapa de palavras antes de contar novamente
     palavras.clear();
 
-    string linha;
-    while (getline(arquivo, linha)) {
-        // Para cada linha, dividimos as palavras
-        stringstream ss(linha);
-        string palavra;
-        while (ss >> palavra) {
-            // Remover caracteres não alfanuméricos do final e início da palavra
-            palavra.erase(remove_if(palavra.begin(), palavra.end(), [](char c) {
-                return !isalnum(c);  // Remove qualquer coisa que não seja alfanumérica
-            }), palavra.end());
+    char c;  // Caractere atual
+    string palavra = "";  // Palavra em construção
 
-            // Incrementa a contagem da palavra
-            palavras[palavra]++;
+    while (arquivo.get(c)) {  // Lê caractere por caractere
+        if (isCaracterValido(c)) {  // Usa a função personalizada para verificar o caractere
+            palavra += c;  // Adiciona o caractere à palavra atual
+        } else {  // Encontrou um delimitador (espaço, vírgula, ponto, etc.)
+            if (!palavra.empty()) {  // Se houver uma palavra em construção
+                palavras[palavra]++;  // Adiciona a palavra ao dicionário
+
+                // Depuração: imprime a palavra adicionada
+                cout << "Palavra adicionada: " << palavra << endl;
+
+                palavra = "";  // Zera a palavra para começar outra
+            }
         }
     }
 
-    // Se o arquivo estiver vazio, a contagem será zero, mas o arquivo foi processado corretamente
-    if (palavras.empty()) {
-        return true;  // Retorna true porque o arquivo foi processado, mas não tem palavras
+    // Adiciona a última palavra, se houver (caso o arquivo não termine com um delimitador)
+    if (!palavra.empty()) {
+        palavras[palavra]++;
+        cout << "Palavra adicionada (final): " << palavra << endl;  // Depuração
     }
 
-    return true;  // Se o arquivo contiver palavras, retorna true após processá-lo
+    // Depuração: imprime todas as palavras no mapa
+    cout << "Palavras no dicionário:" << endl;
+    for (const auto& par : palavras) {
+        cout << par.first << ": " << par.second << endl;
+    }
+
+    return true;  // Retorna true porque o arquivo foi processado corretamente
 }
 
 int ContaPalavras::getContagem() const {

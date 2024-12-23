@@ -8,9 +8,8 @@ SRC_OBJ_DIR = $(BUILD_DIR)/src
 TEST_OBJ_DIR = $(BUILD_DIR)/tests
 LIB_OBJ_DIR = $(BUILD_DIR)/libs
 
-# Regra principal: compila e executa os testes
+# Regra principal: compila o executável
 all: testa_conta_palavras
-	./testa_conta_palavras
 
 # Compila o executável principal
 testa_conta_palavras: $(SRC_OBJ_DIR)/conta_palavras.o $(TEST_OBJ_DIR)/testa_conta_palavras.o $(LIB_OBJ_DIR)/catch_amalgamated.o
@@ -47,4 +46,4 @@ cppcheck:
 
 # Limpeza de arquivos gerados
 clean:
-	rm -rf $(BUILD_DIR)/*.o *.gc* *.gcda *.gcno testa_conta_palavras
+	rm -rf $(BUILD_DIR)/*.o *.gc* *.gcda *.gcno testa_conta_palavras teste_codificacao.o teste_codificacao
