@@ -172,3 +172,19 @@ TEST_CASE("Arquivo com apenas delimitadores", "[carregarArquivo]") {
     // Contagem esperada (0 palavras)
     REQUIRE(conta.getContagem() == 0);
 }
+
+TEST_CASE("Palavras muito longas", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    REQUIRE(conta.carregarArquivo("arquivo_palavras_longas.txt"));
+
+    // Contagem esperada (6 palavras no total, com repetições)
+    REQUIRE(conta.getContagem() == 6);
+
+    // Verificação de contagem de cada palavra
+    REQUIRE(conta.getPalavra("supercalifragilisticexpialidocious") == 2);
+    REQUIRE(conta.getPalavra("pneumonoultramicroscopicsilicovolcanoconiosis") == 1);
+    REQUIRE(conta.getPalavra("hippopotomonstrosesquipedaliophobia") == 1);
+    REQUIRE(conta.getPalavra("antidisestablishmentarianism") == 1);
+    REQUIRE(conta.getPalavra("floccinaucinihilipilification") == 1);
+}
