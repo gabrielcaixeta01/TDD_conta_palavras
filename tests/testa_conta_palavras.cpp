@@ -80,7 +80,24 @@ TEST_CASE("Quebras de linha", "[carregarArquivo]") {
     REQUIRE(conta.getContagem() == 3);
 
     // Verifica se cada palavra foi contada corretamente
-    REQUIRE(conta.getPalavra("palavra1") == 1);
-    REQUIRE(conta.getPalavra("palavra2") == 1);
-    REQUIRE(conta.getPalavra("palavra3") == 1);
+    REQUIRE(conta.getPalavra("palavra") == 3);
+    
+}
+
+TEST_CASE("Palavras com números misturados", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Carrega o arquivo de teste
+    REQUIRE(conta.carregarArquivo("arquivo_com_numeros.txt"));
+
+    // Verifica o total de palavras (números isolados são ignorados)
+    REQUIRE(conta.getContagem() == 4);
+
+    // Verifica a contagem específica das palavras válidas
+    REQUIRE(conta.getPalavra("teste") == 3);
+    REQUIRE(conta.getPalavra("palavra") == 1);
+   
+    // Números isolados não devem aparecer no dicionário
+    REQUIRE(conta.getPalavra("123") == 0);
+    REQUIRE(conta.getPalavra("456") == 0);
 }

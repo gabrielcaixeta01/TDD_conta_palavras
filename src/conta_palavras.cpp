@@ -32,19 +32,41 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
     string palavra = "";  // Palavra em construção
 
     while (arquivo.get(c)) {  // Lê caractere por caractere
-        if (isCaracterValido(c)) {  // Usa a função personalizada para verificar o caractere
+        if (isalpha(c) || (unsigned char)c >= 128) {  // Verifica se o caractere é uma letra (inclui acentos)
             palavra += c;  // Adiciona o caractere à palavra atual
-        } else {  // Encontrou um delimitador (espaço, vírgula, ponto, etc.)
+        } else {  // Encontrou um delimitador ou caractere inválido
             if (!palavra.empty()) {  // Se houver uma palavra em construção
-                palavras[palavra]++;  // Adiciona a palavra ao dicionário
-                palavra = "";  // Zera a palavra para começar outra
+                // Verifica se a palavra contém números
+                bool temNumero = false;
+                for (char p : palavra) {
+                    if (isdigit(p)) {  // Se encontrar um número, marca como inválida
+                        temNumero = true;
+                        break;
+                    }
+                }
+
+                if (!temNumero) {
+                    palavras[palavra]++;  // Adiciona a palavra ao dicionário se for válida
+                }
+
+                palavra = "";  // Reseta a palavra para começar outra
             }
         }
     }
 
     // Adiciona a última palavra, se houver (caso o arquivo não termine com um delimitador)
     if (!palavra.empty()) {
-        palavras[palavra]++;
+        bool temNumero = false;
+        for (char p : palavra) {
+            if (isdigit(p)) {
+                temNumero = true;
+                break;
+            }
+        }
+
+        if (!temNumero) {
+            palavras[palavra]++;
+        }
     }
 
     return true;  // Retorna true porque o arquivo foi processado corretamente
