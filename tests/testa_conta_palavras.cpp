@@ -163,3 +163,12 @@ TEST_CASE("Palavras em diferentes idiomas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("über") == 1);
     REQUIRE(conta.getPalavra("jalapeño") == 1);
 }
+
+TEST_CASE("Arquivo com apenas delimitadores", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    REQUIRE(conta.carregarArquivo("arquivo_apenas_delimitadores.txt"));
+
+    // Contagem esperada (0 palavras)
+    REQUIRE(conta.getContagem() == 0);
+}
