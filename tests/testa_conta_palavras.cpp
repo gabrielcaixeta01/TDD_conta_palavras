@@ -112,6 +112,18 @@ TEST_CASE("Delimitadores não comuns", "[carregarArquivo]") {
     REQUIRE(conta.getContagem() == 4);
 
     // Verifica se cada palavra foi contada corretamente
-    REQUIRE(conta.getPalavra("palavra") == 4);
-    
+    REQUIRE(conta.getPalavra("palavra") == 4);   
+}
+
+TEST_CASE("Palavras separadas por múltiplos delimitadores", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Testa carregar o arquivo com múltiplos delimitadores consecutivos
+    REQUIRE(conta.carregarArquivo("arquivo_multiplos_delimitadores.txt"));
+
+    // Verifica se a contagem total está correta (5 palavras no total)
+    REQUIRE(conta.getContagem() == 5);
+
+    // Verifica se cada palavra foi contada corretamente
+    REQUIRE(conta.getPalavra("palavra") == 5);
 }
