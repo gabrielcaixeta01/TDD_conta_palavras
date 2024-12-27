@@ -188,3 +188,16 @@ TEST_CASE("Palavras muito longas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("antidisestablishmentarianism") == 1);
     REQUIRE(conta.getPalavra("floccinaucinihilipilification") == 1);
 }
+
+TEST_CASE("Palavras com símbolos misturados", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    REQUIRE(conta.carregarArquivo("arquivo_palavras_simbolos.txt"));
+
+    // Contagem esperada (2 palavras válidas)
+    REQUIRE(conta.getContagem() == 9);
+
+    // Verificação de contagem de cada palavra
+    REQUIRE(conta.getPalavra("palavra") == 3);       // palavra@meio vira palavra
+    REQUIRE(conta.getPalavra("valida") == 1);        // valida!simbolo vira valida
+}

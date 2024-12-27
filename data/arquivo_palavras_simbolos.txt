@@ -1,0 +1,1 @@
+palavra@meio palavra_meio+simbolo palavra#invalida valida!simbolo
