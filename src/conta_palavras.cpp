@@ -32,41 +32,24 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
     string palavra = "";  // Palavra em construção
 
     while (arquivo.get(c)) {  // Lê caractere por caractere
-        if (isalpha(c) || c == '\'' || (unsigned char)c >= 128) {  // Inclui apóstrofes
-            palavra += c;
-        } else {  // Encontrou um delimitador ou caractere inválido
-            if (!palavra.empty()) {  // Se houver uma palavra em construção
-                // Verifica se a palavra contém números
-                bool temNumero = false;
-                for (char p : palavra) {
-                    if (isdigit(p)) {  // Se encontrar um número, marca como inválida
-                        temNumero = true;
-                        break;
-                    }
-                }
-
-                if (!temNumero) {
-                    palavras[palavra]++;  // Adiciona a palavra ao dicionário se for válida
-                }
-
-                palavra = "";  // Reseta a palavra para começar outra
+        if (isalpha(c, locale("")) || (c == '\'' && !palavra.empty() && isalpha(palavra.back())) || (unsigned char)c >= 128) {
+            palavra += c;  // Adiciona o caractere válido à palavra
+        } else {
+            if (!palavra.empty()) {
+                palavras[palavra]++;
+                palavra = "";  // Reseta a palavra
             }
         }
     }
 
     // Adiciona a última palavra, se houver (caso o arquivo não termine com um delimitador)
     if (!palavra.empty()) {
-        bool temNumero = false;
-        for (char p : palavra) {
-            if (isdigit(p)) {
-                temNumero = true;
-                break;
-            }
-        }
+        palavras[palavra]++;
+    }
 
-        if (!temNumero) {
-            palavras[palavra]++;
-        }
+    cout << "Palavras capturadas:" << endl;
+    for (const auto& par : palavras) {
+        cout << par.first << ": " << par.second << endl;
     }
 
     return true;  // Retorna true porque o arquivo foi processado corretamente

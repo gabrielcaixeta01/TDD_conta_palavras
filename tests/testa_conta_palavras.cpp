@@ -131,13 +131,12 @@ TEST_CASE("Palavras separadas por múltiplos delimitadores", "[carregarArquivo]"
 TEST_CASE("Palavras com apóstrofes", "[carregarArquivo]") {
     ContaPalavras conta;
 
-    // Testa carregar o arquivo com palavras que possuem apóstrofes
     REQUIRE(conta.carregarArquivo("arquivo_apostrofes.txt"));
 
-    // Verifica se a contagem total está correta (7 palavras no total)
+    // Contagem esperada (7 palavras no total)
     REQUIRE(conta.getContagem() == 7);
 
-    // Verifica se cada palavra foi contada corretamente
+    // Verificação de palavras individuais
     REQUIRE(conta.getPalavra("it's") == 1);
     REQUIRE(conta.getPalavra("don't") == 1);
     REQUIRE(conta.getPalavra("they're") == 1);
@@ -145,4 +144,22 @@ TEST_CASE("Palavras com apóstrofes", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("can't") == 1);
     REQUIRE(conta.getPalavra("won't") == 1);
     REQUIRE(conta.getPalavra("shouldn't") == 1);
+}
+
+TEST_CASE("Palavras em diferentes idiomas", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Testa carregar o arquivo com palavras de diferentes idiomas
+    REQUIRE(conta.carregarArquivo("arquivo_idiomas.txt"));
+
+    // Verifica se a contagem total está correta (5 palavras no total)
+    REQUIRE(conta.getContagem() == 6);
+
+    // Verifica se cada palavra foi contada corretamente
+    REQUIRE(conta.getPalavra("coração") == 1);
+    REQUIRE(conta.getPalavra("déjà") == 1);
+    REQUIRE(conta.getPalavra("vu") == 1);
+    REQUIRE(conta.getPalavra("niño") == 1);
+    REQUIRE(conta.getPalavra("über") == 1);
+    REQUIRE(conta.getPalavra("jalapeño") == 1);
 }
