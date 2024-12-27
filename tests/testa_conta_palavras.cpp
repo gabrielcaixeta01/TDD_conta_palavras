@@ -101,3 +101,17 @@ TEST_CASE("Palavras com números misturados", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("123") == 0);
     REQUIRE(conta.getPalavra("456") == 0);
 }
+
+TEST_CASE("Delimitadores não comuns", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Testa carregar um arquivo com palavras separadas por delimitadores incomuns
+    REQUIRE(conta.carregarArquivo("arquivo_delimitadores.txt"));
+
+    // Verifica se a contagem total está correta (4 palavras no total)
+    REQUIRE(conta.getContagem() == 4);
+
+    // Verifica se cada palavra foi contada corretamente
+    REQUIRE(conta.getPalavra("palavra") == 4);
+    
+}
