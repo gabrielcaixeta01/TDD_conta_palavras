@@ -127,3 +127,22 @@ TEST_CASE("Palavras separadas por múltiplos delimitadores", "[carregarArquivo]"
     // Verifica se cada palavra foi contada corretamente
     REQUIRE(conta.getPalavra("palavra") == 5);
 }
+
+TEST_CASE("Palavras com apóstrofes", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Testa carregar o arquivo com palavras que possuem apóstrofes
+    REQUIRE(conta.carregarArquivo("arquivo_apostrofes.txt"));
+
+    // Verifica se a contagem total está correta (7 palavras no total)
+    REQUIRE(conta.getContagem() == 7);
+
+    // Verifica se cada palavra foi contada corretamente
+    REQUIRE(conta.getPalavra("it's") == 1);
+    REQUIRE(conta.getPalavra("don't") == 1);
+    REQUIRE(conta.getPalavra("they're") == 1);
+    REQUIRE(conta.getPalavra("isn't") == 1);
+    REQUIRE(conta.getPalavra("can't") == 1);
+    REQUIRE(conta.getPalavra("won't") == 1);
+    REQUIRE(conta.getPalavra("shouldn't") == 1);
+}

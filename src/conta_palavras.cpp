@@ -32,8 +32,8 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
     string palavra = "";  // Palavra em construção
 
     while (arquivo.get(c)) {  // Lê caractere por caractere
-        if (isalpha(c) || (unsigned char)c >= 128) {  // Verifica se o caractere é uma letra (inclui acentos)
-            palavra += c;  // Adiciona o caractere à palavra atual
+        if (isalpha(c) || c == '\'' || (unsigned char)c >= 128) {  // Inclui apóstrofes
+            palavra += c;
         } else {  // Encontrou um delimitador ou caractere inválido
             if (!palavra.empty()) {  // Se houver uma palavra em construção
                 // Verifica se a palavra contém números
