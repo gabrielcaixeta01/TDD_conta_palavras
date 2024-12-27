@@ -1,5 +1,4 @@
 // Copyright 2024 Gabriel Caixeta Romero
-
 #ifndef INCLUDE_CONTA_PALAVRAS_HPP_
 #define INCLUDE_CONTA_PALAVRAS_HPP_
 
@@ -9,12 +8,14 @@
 using namespace std;
 
 class ContaPalavras {
-    public:
+     public:
         ContaPalavras();
         bool carregarArquivo(const string& nomeArquivo);
         int getContagem() const;
         int getPalavra(const string& palavra) const;
-    private:
+        void printPalavras() const;  // Adicionado aqui
+
+     private:
         unordered_map<string, int> palavras;
 };
 

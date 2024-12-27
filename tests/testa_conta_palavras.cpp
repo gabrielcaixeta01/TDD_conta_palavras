@@ -201,3 +201,18 @@ TEST_CASE("Palavras com símbolos misturados", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("palavra") == 3);       // palavra@meio vira palavra
     REQUIRE(conta.getPalavra("valida") == 1);        // valida!simbolo vira valida
 }
+
+TEST_CASE("Teste ordem alfabética", "[ordem_alfabetica]") {
+    ContaPalavras conta;
+    REQUIRE(conta.carregarArquivo("arquivo_alfabetico.txt"));
+
+    // O programa deve printar as palavras em ordem alfabética
+    conta.printPalavras();
+
+    // Adicionalmente, podemos verificar algumas contagens
+    REQUIRE(conta.getPalavra("abelha") == 2);
+    REQUIRE(conta.getPalavra("elefante") == 2);
+    REQUIRE(conta.getPalavra("zebra") == 2);
+    REQUIRE(conta.getPalavra("tigre") == 2);
+    REQUIRE(conta.getPalavra("banana") == 1);
+}

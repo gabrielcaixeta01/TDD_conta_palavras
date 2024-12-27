@@ -33,13 +33,13 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
 
     while (arquivo.get(c)) {  // Lê caractere por caractere
         if (isalpha(c, locale("")) || (c == '\'' && !palavra.empty() && isalpha(palavra.back())) || (unsigned char)c >= 128) {
-            palavra += c;  // Adiciona o caractere válido à palavra
-        } else {
-            if (!palavra.empty()) {
-                palavras[palavra]++;
-                palavra = "";  // Reseta a palavra
-            }
+        palavra += c;  // Adiciona o caractere válido à palavra
+    } else {
+        if (!palavra.empty()) {
+            palavras[palavra]++;
+            palavra = "";  // Reseta a palavra
         }
+    }
     }
 
     // Adiciona a última palavra, se houver (caso o arquivo não termine com um delimitador)
@@ -47,10 +47,7 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
         palavras[palavra]++;
     }
 
-    cout << "Palavras capturadas:" << endl;
-    for (const auto& par : palavras) {
-        cout << par.first << ": " << par.second << endl;
-    }
+    printPalavras();
 
     return true;  // Retorna true porque o arquivo foi processado corretamente
 }
@@ -71,4 +68,17 @@ int ContaPalavras::getPalavra(const string& palavra) const {
         return it->second;
     }
     return 0;  // Se a palavra não for encontrada, retorna 0
+}
+
+void ContaPalavras::printPalavras() const {
+    // Transfere os elementos do mapa para um vetor
+    vector<pair<string, int>> palavrasOrdenadas(palavras.begin(), palavras.end());
+
+    // Ordena o vetor em ordem alfabética
+    sort(palavrasOrdenadas.begin(), palavrasOrdenadas.end());
+
+    // Itera sobre o vetor e imprime as palavras e suas contagens
+    for (const auto& par : palavrasOrdenadas) {
+        cout << par.first << ": " << par.second << endl;
+    }
 }
