@@ -1,0 +1,19 @@
+# Leia-me (README)
+
+## Descrição do Projeto
+Este projeto implementa um programa para ler arquivos de texto, contar a 
+frequência de palavras diferentes (diferenciando maiúsculas e minúsculas), e 
+listar as palavras em ordem alfabética junto com a contagem de ocorrências. 
+Os testes utilizam o framework Catch2.
+
+## Funcionalidades
+- Contagem de palavras com suporte a arquivos com diferentes caracteres.
+- Diferenciação de maiúsculas e minúsculas.
+- Ignora números e caracteres inválidos.
+- Suporte a múltiplos delimitadores, incluindo quebras de linha.
+- Ordenação alfabética das palavras com remoção de acentos na visualização.
+
+## Como Usar
+1. Compile o programa utilizando o `Makefile` fornecido:
+   ```bash
+   make

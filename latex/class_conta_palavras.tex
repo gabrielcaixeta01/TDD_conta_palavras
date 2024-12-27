@@ -1,0 +1,103 @@
+\doxysection{Conta\+Palavras Class Reference}
+\hypertarget{class_conta_palavras}{}\label{class_conta_palavras}\index{ContaPalavras@{ContaPalavras}}
+
+
+Classe responsável por carregar um arquivo de texto, contar as palavras presentes nele e apresentar os resultados.  
+
+
+
+
+{\ttfamily \#include $<$conta\+\_\+palavras.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_conta_palavras_a368e96d7a37f90ccea9c01ebd99e9479}{Conta\+Palavras}} ()
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_conta_palavras}{Conta\+Palavras}. Configura o locale necessário para suportar UTF-\/8. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_conta_palavras_a8e51ec73b97c70ed4a943851b889b89c}{carregar\+Arquivo}} (const std\+::string \&nome\+Arquivo)
+\begin{DoxyCompactList}\small\item\em Carrega um arquivo de texto e conta as palavras presentes nele. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_conta_palavras_a652758cee7acfade5624357f10924d22}{get\+Contagem}} () const
+\begin{DoxyCompactList}\small\item\em Obtém o total de palavras contadas no arquivo carregado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_conta_palavras_aebea3bbd450ee4a6674bec0cc2a8e7f8}{get\+Palavra}} (const std\+::string \&palavra) const
+\begin{DoxyCompactList}\small\item\em Obtém a contagem de uma palavra específica. \end{DoxyCompactList}\item 
+\Hypertarget{class_conta_palavras_aed1ffafc84458fab0a84e0621da3ad2e}\label{class_conta_palavras_aed1ffafc84458fab0a84e0621da3ad2e} 
+void {\bfseries print\+Palavras} () const
+\begin{DoxyCompactList}\small\item\em Imprime as palavras e suas respectivas contagens em ordem alfabética. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável por carregar um arquivo de texto, contar as palavras presentes nele e apresentar os resultados. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_conta_palavras_a368e96d7a37f90ccea9c01ebd99e9479}\index{ContaPalavras@{ContaPalavras}!ContaPalavras@{ContaPalavras}}
+\index{ContaPalavras@{ContaPalavras}!ContaPalavras@{ContaPalavras}}
+\doxysubsubsection{\texorpdfstring{ContaPalavras()}{ContaPalavras()}}
+{\footnotesize\ttfamily \label{class_conta_palavras_a368e96d7a37f90ccea9c01ebd99e9479} 
+Conta\+Palavras\+::\+Conta\+Palavras (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_conta_palavras}{Conta\+Palavras}. Configura o locale necessário para suportar UTF-\/8. 
+
+Construtor da classe \doxylink{class_conta_palavras}{Conta\+Palavras}.
+
+Configura o locale global para UTF-\/8. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_conta_palavras_a8e51ec73b97c70ed4a943851b889b89c}\index{ContaPalavras@{ContaPalavras}!carregarArquivo@{carregarArquivo}}
+\index{carregarArquivo@{carregarArquivo}!ContaPalavras@{ContaPalavras}}
+\doxysubsubsection{\texorpdfstring{carregarArquivo()}{carregarArquivo()}}
+{\footnotesize\ttfamily \label{class_conta_palavras_a8e51ec73b97c70ed4a943851b889b89c} 
+bool Conta\+Palavras\+::carregar\+Arquivo (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome\+Arquivo}{}\end{DoxyParamCaption})}
+
+
+
+Carrega um arquivo de texto e conta as palavras presentes nele. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Arquivo} & Nome do arquivo a ser carregado (localizado na pasta "{}data"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Se o arquivo foi carregado e processado com sucesso. 
+
+false Se o arquivo não pôde ser aberto. 
+\end{DoxyReturn}
+\Hypertarget{class_conta_palavras_a652758cee7acfade5624357f10924d22}\index{ContaPalavras@{ContaPalavras}!getContagem@{getContagem}}
+\index{getContagem@{getContagem}!ContaPalavras@{ContaPalavras}}
+\doxysubsubsection{\texorpdfstring{getContagem()}{getContagem()}}
+{\footnotesize\ttfamily \label{class_conta_palavras_a652758cee7acfade5624357f10924d22} 
+int Conta\+Palavras\+::get\+Contagem (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtém o total de palavras contadas no arquivo carregado. 
+
+\begin{DoxyReturn}{Returns}
+int Número total de palavras. 
+\end{DoxyReturn}
+\Hypertarget{class_conta_palavras_aebea3bbd450ee4a6674bec0cc2a8e7f8}\index{ContaPalavras@{ContaPalavras}!getPalavra@{getPalavra}}
+\index{getPalavra@{getPalavra}!ContaPalavras@{ContaPalavras}}
+\doxysubsubsection{\texorpdfstring{getPalavra()}{getPalavra()}}
+{\footnotesize\ttfamily \label{class_conta_palavras_aebea3bbd450ee4a6674bec0cc2a8e7f8} 
+int Conta\+Palavras\+::get\+Palavra (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{palavra}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtém a contagem de uma palavra específica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em palavra} & Palavra a ser buscada no dicionário. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Número de ocorrências da palavra. Retorna 0 se a palavra não estiver presente. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/conta\+\_\+palavras.\+hpp\item 
+src/conta\+\_\+palavras.\+cpp\end{DoxyCompactItemize}

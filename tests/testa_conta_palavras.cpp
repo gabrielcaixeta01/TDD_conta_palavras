@@ -4,34 +4,44 @@
 #include "../libs/catch_amalgamated.hpp"
 #include "../include/conta_palavras.hpp"
 
-// Teste em arquivo vazio
+/**
+ * @brief Teste em arquivo vazio.
+ */
 TEST_CASE("Arquivo vazio", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_vazio.txt"));
     REQUIRE(conta.getContagem() == 0);
 }
 
-// Teste contando errado o número de palavras
+/**
+ * @brief Teste com arquivo válido.
+ */
 TEST_CASE("Arquivo válido", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_valido.txt"));
     REQUIRE(conta.getContagem() == 8);
 }
 
-// Teste com arquivo inexistente
+/**
+ * @brief Teste com arquivo inexistente.
+ */
 TEST_CASE("Arquivo inexistente", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE_FALSE(conta.carregarArquivo("arquivo_inexistente.txt"));
 }
 
-// Teste arquivo com palavras repetidas
+/**
+ * @brief Teste com palavras repetidas no arquivo.
+ */
 TEST_CASE("Arquivo com palavras repetidas", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_repetido.txt"));
     REQUIRE(conta.getContagem() == 10);
 }
 
-// Teste com letras maiúsculas e minúsculas
+/**
+ * @brief Teste diferenciação de maiúsculas e minúsculas.
+ */
 TEST_CASE("Diferenciação de maiúsculas e minúsculas", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_maiusculas_minusculas.txt"));
@@ -39,7 +49,9 @@ TEST_CASE("Diferenciação de maiúsculas e minúsculas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("texto") == 1);
 }
 
-// Teste com caracteres especiais
+/**
+ * @brief Teste com caracteres especiais.
+ */
 TEST_CASE("Palavras com caracteres especiais", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_com_acento.txt"));
@@ -47,7 +59,9 @@ TEST_CASE("Palavras com caracteres especiais", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("será") == 1);
 }
 
-// Teste com quebras de linha
+/**
+ * @brief Teste com quebras de linha no arquivo.
+ */
 TEST_CASE("Quebras de linha", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_quebra_de_linha.txt"));
@@ -55,7 +69,9 @@ TEST_CASE("Quebras de linha", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("palavra") == 3);
 }
 
-// Teste com números misturados
+/**
+ * @brief Teste com palavras misturadas a números.
+ */
 TEST_CASE("Palavras com números misturados", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_com_numeros.txt"));
@@ -65,7 +81,9 @@ TEST_CASE("Palavras com números misturados", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("123") == 0);
 }
 
-// Teste com delimitadores não comuns
+/**
+ * @brief Teste com delimitadores não comuns.
+ */
 TEST_CASE("Delimitadores não comuns", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_delimitadores.txt"));
@@ -73,7 +91,9 @@ TEST_CASE("Delimitadores não comuns", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("palavra") == 4);
 }
 
-// Teste com múltiplos delimitadores consecutivos
+/**
+ * @brief Teste com múltiplos delimitadores consecutivos.
+ */
 TEST_CASE("Múltiplos delimitadores", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_multiplos_delimitadores.txt"));
@@ -81,7 +101,9 @@ TEST_CASE("Múltiplos delimitadores", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("palavra") == 5);
 }
 
-// Teste com apóstrofes
+/**
+ * @brief Teste com palavras contendo apóstrofes.
+ */
 TEST_CASE("Palavras com apóstrofes", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_apostrofes.txt"));
@@ -90,7 +112,9 @@ TEST_CASE("Palavras com apóstrofes", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("don't") == 1);
 }
 
-// Teste com palavras em diferentes idiomas
+/**
+ * @brief Teste com palavras em diferentes idiomas.
+ */
 TEST_CASE("Palavras em diferentes idiomas", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_idiomas.txt"));
@@ -100,14 +124,18 @@ TEST_CASE("Palavras em diferentes idiomas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("jalapeño") == 1);
 }
 
-// Teste com apenas delimitadores
+/**
+ * @brief Teste com arquivo contendo apenas delimitadores.
+ */
 TEST_CASE("Arquivo com apenas delimitadores", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_apenas_delimitadores.txt"));
     REQUIRE(conta.getContagem() == 0);
 }
 
-// Teste com palavras muito longas
+/**
+ * @brief Teste com palavras muito longas.
+ */
 TEST_CASE("Palavras muito longas", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_palavras_longas.txt"));
@@ -116,7 +144,9 @@ TEST_CASE("Palavras muito longas", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("floccinaucinihilipilification") == 1);
 }
 
-// Teste com símbolos misturados
+/**
+ * @brief Teste com palavras misturadas a símbolos.
+ */
 TEST_CASE("Palavras com símbolos misturados", "[carregarArquivo]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_palavras_simbolos.txt"));
@@ -125,7 +155,9 @@ TEST_CASE("Palavras com símbolos misturados", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("valida") == 1);
 }
 
-// Teste de ordem alfabética
+/**
+ * @brief Teste de ordem alfabética na listagem de palavras.
+ */
 TEST_CASE("Teste ordem alfabética", "[ordem_alfabetica]") {
     ContaPalavras conta;
     REQUIRE(conta.carregarArquivo("arquivo_alfabetico.txt"));
