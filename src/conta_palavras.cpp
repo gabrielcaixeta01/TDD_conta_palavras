@@ -37,10 +37,6 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
         } else {  // Encontrou um delimitador (espaço, vírgula, ponto, etc.)
             if (!palavra.empty()) {  // Se houver uma palavra em construção
                 palavras[palavra]++;  // Adiciona a palavra ao dicionário
-
-                // Depuração: imprime a palavra adicionada
-                cout << "Palavra adicionada: " << palavra << endl;
-
                 palavra = "";  // Zera a palavra para começar outra
             }
         }
@@ -49,13 +45,6 @@ bool ContaPalavras::carregarArquivo(const string& nomeArquivo) {
     // Adiciona a última palavra, se houver (caso o arquivo não termine com um delimitador)
     if (!palavra.empty()) {
         palavras[palavra]++;
-        cout << "Palavra adicionada (final): " << palavra << endl;  // Depuração
-    }
-
-    // Depuração: imprime todas as palavras no mapa
-    cout << "Palavras no dicionário:" << endl;
-    for (const auto& par : palavras) {
-        cout << par.first << ": " << par.second << endl;
     }
 
     return true;  // Retorna true porque o arquivo foi processado corretamente

@@ -69,3 +69,18 @@ TEST_CASE("Palavras com caracteres especiais", "[carregarArquivo]") {
     REQUIRE(conta.getPalavra("é") == 1);  // Esperado: 1
     REQUIRE(conta.getPalavra("será") == 1);  // Esperado: 1
 }
+
+TEST_CASE("Quebras de linha", "[carregarArquivo]") {
+    ContaPalavras conta;
+
+    // Testa carregar um arquivo com palavras separadas por quebras de linha
+    REQUIRE(conta.carregarArquivo("arquivo_quebra_de_linha.txt"));
+
+    // Verifica se a contagem total está correta (3 palavras)
+    REQUIRE(conta.getContagem() == 3);
+
+    // Verifica se cada palavra foi contada corretamente
+    REQUIRE(conta.getPalavra("palavra1") == 1);
+    REQUIRE(conta.getPalavra("palavra2") == 1);
+    REQUIRE(conta.getPalavra("palavra3") == 1);
+}
