@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Main Page</title>
+<title>Conta Palavras: Trabalho 2 - Métodos de Programação</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Conta Palavras
    </div>
    <div id="projectbrief">Projeto TDD Conta Palavras: Processamento de arquivos texto</div>
   </td>
@@ -84,10 +84,65 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">My Project Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Trabalho 2 - Métodos de Programação </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Descrição do Projeto</h1>
+<p>Este projeto implementa um programa capaz de processar arquivos de texto e realizar a contagem de palavras presentes neles. Ele também exibe as palavras em ordem alfabética, juntamente com a frequência de ocorrência, considerando diversos cenários como palavras com caracteres especiais, apóstrofes, e números misturados. O desenvolvimento seguiu os princípios de TDD (Desenvolvimento Orientado a Testes), garantindo robustez e precisão no resultado final.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Funcionalidades</h1>
+<ul>
+<li>Contagem de Palavras: Conta a frequência de cada palavra em arquivos de texto.</li>
+<li>Diferenciação de Maiúsculas e Minúsculas: Trata palavras como “Texto” e “texto” como distintas.</li>
+<li>Ignora Números e Símbolos Inválidos: Apenas palavras são consideradas na contagem.</li>
+<li>Suporte a Diferentes Caracteres: Inclui palavras com acentos, apóstrofes e caracteres Unicode.</li>
+<li>Suporte a Vários Delimitadores: Considera espaços, quebras de linha, e outros delimitadores.</li>
+<li>Ordenação Alfabética: Exibe as palavras em ordem alfabética (com remoção de acentos para efeito de ordenação).</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Tecnologias Utilizadas</h1>
+<ul>
+<li><b>C++</b>: Linguagem principal para a implementação do programa.</li>
+<li><b>Catch2</b>: Framework para testes.</li>
+<li><b>Doxygen</b>: Ferramenta para documentação do código.</li>
+<li><b>GCOV</b>: Ferramenta para análise de cobertura de código.</li>
+<li><b>Make</b>: Gerenciamento de compilação e execução de testes.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Como Rodar o Projeto</h1>
+<ol type="1">
+<li><b>Clonar o Repositório</b> <div class="fragment"><div class="line">git clone &lt;https://github.com/gabrielcaixeta01/TDD_conta_palavras&gt;</div>
+<div class="line">cd TDD_conta_palavras</div>
+</div><!-- fragment --></li>
+<li><b>Compilar o Projeto</b> <br  />
+ Utilize o comando abaixo para compilar os arquivos do programa: <div class="fragment"><div class="line">make</div>
+</div><!-- fragment --></li>
+<li><b>Executar os Testes</b> <br  />
+ Para rodar os testes automatizados e verificar a cobertura das funcionalidades: <div class="fragment"><div class="line">make test</div>
+</div><!-- fragment --></li>
+<li><b>Limpar os Arquivos Compilados</b> <br  />
+ Caso deseje limpar os arquivos gerados durante a compilação: <div class="fragment"><div class="line">make clean</div>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Estrutura do Projeto</h1>
+<ul>
+<li>src/: Contém os arquivos fonte do projeto.</li>
+<li>include/: Contém os cabeçalhos (.hpp) utilizados.</li>
+<li>tests/: Inclui os arquivos de testes unitários com o framework Catch2.</li>
+<li>data/: Contém os arquivos de texto utilizados como exemplos para testes.</li>
+<li>html/: Diretório gerado pelo Doxygen com a documentação do projeto.</li>
+<li>Makefile: Script para automação das tarefas de compilação, testes e geração de documentação.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Desenvolvedor</h1>
+<ul>
+<li>Gabriel Caixeta Romero (<a href="https://www.linkedin.com/in/gabriel-caixeta-romero/">https://www.linkedin.com/in/gabriel-caixeta-romero/</a>) </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -4,23 +4,10 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include <codecvt>
-#include <cctype>
 #include <vector>
 #include <utility>
+#include <cctype>
 #include <string>
-
-/**
- * @brief Namespace para funções auxiliares internas.
- */
-namespace {
-
-/**
- * @brief Verifica se um caractere é válido (letra, número ou caractere Unicode).
- * @param c Caractere a ser verificado.
- * @return true Se o caractere for válido.
- * @return false Caso contrário.
- */
 
 /**
  * @brief Remove acentos de uma string.
@@ -31,20 +18,21 @@ std::string removerAcentos(const std::string& palavra) {
     std::wstring palavraWide;
     for (char c : palavra) {
         switch (static_cast<unsigned char>(c)) {
-            case '\xE0': case '\xE1': case '\xE2': case '\xE3': case '\xE4': case '\xE5': c = 'a'; break; // à, á, â, ã, ä, å
-            case '\xE8': case '\xE9': case '\xEA': case '\xEB': c = 'e'; break; // è, é, ê, ë
-            case '\xEC': case '\xED': case '\xEE': case '\xEF': c = 'i'; break; // ì, í, î, ï
-            case '\xF2': case '\xF3': case '\xF4': case '\xF5': case '\xF6': c = 'o'; break; // ò, ó, ô, õ, ö
-            case '\xF9': case '\xFA': case '\xFB': case '\xFC': c = 'u'; break; // ù, ú, û, ü
-            case '\xE7': c = 'c'; break; // ç
-            case '\xF1': c = 'n'; break; // ñ
+            case '\xE0': case '\xE1': case '\xE2': case '\xE3':
+            case '\xE4': case '\xE5': c = 'a'; break;
+            case '\xE8': case '\xE9': case '\xEA': case '\xEB': c = 'e'; break;
+            case '\xEC': case '\xED': case '\xEE': case '\xEF': c = 'i'; break;
+            case '\xF2': case '\xF3': case '\xF4': case '\xF5':
+            case '\xF6': c = 'o'; break;
+            case '\xF9': case '\xFA': case '\xFB': case '\xFC': c = 'u'; break;
+            case '\xE7': c = 'c'; break;
+            case '\xF1': c = 'n'; break;
             default: break;
         }
         palavraWide += c;
     }
     return std::string(palavraWide.begin(), palavraWide.end());
 }
-}  // namespace
 
 /**
  * @brief Construtor da classe ContaPalavras.

@@ -1,0 +1,67 @@
+\chapter{Trabalho 2 -\/ Métodos de Programação}
+\hypertarget{index}{}\label{index}\index{Trabalho 2 -\/ Métodos de Programação@{Trabalho 2 -\/ Métodos de Programação}}
+\label{index_md__r_e_a_d_m_e}%
+\Hypertarget{index_md__r_e_a_d_m_e}%
+\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Descrição do Projeto}{Descrição do Projeto}}\label{index_autotoc_md1}
+Este projeto implementa um programa capaz de processar arquivos de texto e realizar a contagem de palavras presentes neles. Ele também exibe as palavras em ordem alfabética, juntamente com a frequência de ocorrência, considerando diversos cenários como palavras com caracteres especiais, apóstrofes, e números misturados. O desenvolvimento seguiu os princípios de TDD (Desenvolvimento Orientado a Testes), garantindo robustez e precisão no resultado final.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Funcionalidades}{Funcionalidades}}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Contagem de Palavras\+: Conta a frequência de cada palavra em arquivos de texto.
+\item Diferenciação de Maiúsculas e Minúsculas\+: Trata palavras como “\+Texto” e “texto” como distintas.
+\item Ignora Números e Símbolos Inválidos\+: Apenas palavras são consideradas na contagem.
+\item Suporte a Diferentes Caracteres\+: Inclui palavras com acentos, apóstrofes e caracteres Unicode.
+\item Suporte a Vários Delimitadores\+: Considera espaços, quebras de linha, e outros delimitadores.
+\item Ordenação Alfabética\+: Exibe as palavras em ordem alfabética (com remoção de acentos para efeito de ordenação).
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Tecnologias Utilizadas}{Tecnologias Utilizadas}}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\bfseries{C++}}\+: Linguagem principal para a implementação do programa.
+\item {\bfseries{Catch2}}\+: Framework para testes.
+\item {\bfseries{Doxygen}}\+: Ferramenta para documentação do código.
+\item {\bfseries{GCOV}}\+: Ferramenta para análise de cobertura de código.
+\item {\bfseries{Make}}\+: Gerenciamento de compilação e execução de testes.
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Como Rodar o Projeto}{Como Rodar o Projeto}}\label{index_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Clonar o Repositório}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ <https://github.com/gabrielcaixeta01/TDD\_conta\_palavras>}
+\DoxyCodeLine{cd\ TDD\_conta\_palavras}
+
+\end{DoxyCode}
+
+\item {\bfseries{Compilar o Projeto}} ~\newline
+ Utilize o comando abaixo para compilar os arquivos do programa\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+\item {\bfseries{Executar os Testes}} ~\newline
+ Para rodar os testes automatizados e verificar a cobertura das funcionalidades\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ test}
+
+\end{DoxyCode}
+
+\item {\bfseries{Limpar os Arquivos Compilados}} ~\newline
+ Caso deseje limpar os arquivos gerados durante a compilação\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{Estrutura do Projeto}{Estrutura do Projeto}}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item src/\+: Contém os arquivos fonte do projeto.
+\item include/\+: Contém os cabeçalhos (.hpp) utilizados.
+\item tests/\+: Inclui os arquivos de testes unitários com o framework Catch2.
+\item data/\+: Contém os arquivos de texto utilizados como exemplos para testes.
+\item html/\+: Diretório gerado pelo Doxygen com a documentação do projeto.
+\item Makefile\+: Script para automação das tarefas de compilação, testes e geração de documentação.
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Desenvolvedor}{Desenvolvedor}}\label{index_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Gabriel Caixeta Romero (\href{https://www.linkedin.com/in/gabriel-caixeta-romero/}{\texttt{ https\+://www.\+linkedin.\+com/in/gabriel-\/caixeta-\/romero/}}) 
+\end{DoxyItemize}
