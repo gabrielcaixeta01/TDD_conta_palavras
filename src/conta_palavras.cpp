@@ -14,50 +14,40 @@
  * @brief Namespace para funções auxiliares internas.
  */
 namespace {
+
 /**
  * @brief Verifica se um caractere é válido (letra, número ou caractere Unicode).
- * 
  * @param c Caractere a ser verificado.
  * @return true Se o caractere for válido.
  * @return false Caso contrário.
  */
-bool isCaracterValido(char c) {
-    return (std::isalpha(c) || std::isdigit(c) || (unsigned char)c >= 128);
-}
 
 /**
  * @brief Remove acentos de uma string.
- * 
  * @param palavra String com possíveis acentos.
  * @return std::string String sem acentos.
  */
 std::string removerAcentos(const std::string& palavra) {
-    std::locale loc("en_US.UTF-8");
-    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-    std::wstring palavraWide = converter.from_bytes(palavra);
-    for (auto& c : palavraWide) {
-        if (c >= L'à' && c <= L'ÿ') {
-            switch (c) {
-                case L'à': case L'á': case L'â': case L'ã': case L'ä':
-                case L'å': c = L'a'; break;
-                case L'è': case L'é': case L'ê': case L'ë': c = L'e'; break;
-                case L'ì': case L'í': case L'î': case L'ï': c = L'i'; break;
-                case L'ò': case L'ó': case L'ô': case L'õ': case L'ö':
-                    c = L'o'; break;
-                case L'ù': case L'ú': case L'û': case L'ü': c = L'u'; break;
-                case L'ç': c = L'c'; break;
-                case L'ñ': c = L'n'; break;
-                default: break;
-            }
+    std::wstring palavraWide;
+    for (char c : palavra) {
+        switch (static_cast<unsigned char>(c)) {
+            case '\xE0': case '\xE1': case '\xE2': case '\xE3': case '\xE4': case '\xE5': c = 'a'; break; // à, á, â, ã, ä, å
+            case '\xE8': case '\xE9': case '\xEA': case '\xEB': c = 'e'; break; // è, é, ê, ë
+            case '\xEC': case '\xED': case '\xEE': case '\xEF': c = 'i'; break; // ì, í, î, ï
+            case '\xF2': case '\xF3': case '\xF4': case '\xF5': case '\xF6': c = 'o'; break; // ò, ó, ô, õ, ö
+            case '\xF9': case '\xFA': case '\xFB': case '\xFC': c = 'u'; break; // ù, ú, û, ü
+            case '\xE7': c = 'c'; break; // ç
+            case '\xF1': c = 'n'; break; // ñ
+            default: break;
         }
+        palavraWide += c;
     }
-    return converter.to_bytes(palavraWide);
+    return std::string(palavraWide.begin(), palavraWide.end());
 }
 }  // namespace
 
 /**
  * @brief Construtor da classe ContaPalavras.
- * 
  * Configura o locale global para UTF-8.
  */
 ContaPalavras::ContaPalavras() {
@@ -66,8 +56,8 @@ ContaPalavras::ContaPalavras() {
 
 /**
  * @brief Carrega um arquivo de texto e conta as palavras presentes nele.
- * 
- * @param nomeArquivo Nome do arquivo a ser carregado (localizado na pasta "data").
+ * @param nomeArquivo Nome do arquivo a ser carregado (localizado na pasta 
+ * "data").
  * @return true Se o arquivo foi carregado e processado com sucesso.
  * @return false Se o arquivo não pôde ser aberto.
  */
@@ -79,6 +69,7 @@ bool ContaPalavras::carregarArquivo(const std::string& nomeArquivo) {
     palavras.clear();
     char c;
     std::string palavra = "";
+
     while (arquivo.get(c)) {
         if (std::isalpha(c, std::locale("")) ||
             (c == '\'' && !palavra.empty() && std::isalpha(palavra.back())) ||
@@ -91,15 +82,16 @@ bool ContaPalavras::carregarArquivo(const std::string& nomeArquivo) {
             }
         }
     }
+
     if (!palavra.empty()) {
         palavras[palavra]++;
     }
+
     return true;
 }
 
 /**
  * @brief Obtém o total de palavras contadas no arquivo carregado.
- * 
  * @return int Número total de palavras.
  */
 int ContaPalavras::getContagem() const {
@@ -112,7 +104,6 @@ int ContaPalavras::getContagem() const {
 
 /**
  * @brief Obtém a contagem de uma palavra específica.
- * 
  * @param palavra Palavra a ser buscada no dicionário.
  * @return int Número de ocorrências da palavra. Retorna 0 se a palavra não
  * estiver presente.
