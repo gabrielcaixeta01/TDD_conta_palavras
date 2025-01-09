@@ -31,7 +31,7 @@ class ContaPalavras {
     bool carregarArquivo(const std::string& nomeArquivo);
 
     /**
-     * @brief Obtém o total de palavras contadas no arquivo carregado.
+     * @brief Obtém o total de palavras contadas quando o arquivo é carregado arquivo carregado.
      * 
      * @return int Número total de palavras.
      */
