@@ -10,7 +10,7 @@
 #include <string>
 
 /**
- * @brief Remove acentos de uma string.
+ * @brief Função para remover acentos de uma string.
  * @param palavra String com possíveis acentos.
  * @return std::string String sem acentos.
  */
