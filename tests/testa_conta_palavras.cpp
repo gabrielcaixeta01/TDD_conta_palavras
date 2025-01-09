@@ -73,7 +73,7 @@ TEST_CASE("Palavras com caracteres especiais", "[carregarArquivo]") {
 }
 
 /**
- * @brief Teste com quebras de linha no arquivo.
+ * @brief Teste com varias quebras de linha no arquivo.
  */
 TEST_CASE("Quebras de linha", "[carregarArquivo]") {
     ContaPalavras conta;
